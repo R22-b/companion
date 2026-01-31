@@ -1,0 +1,369 @@
+/* Float Animation (Slower, more ethereal) */
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-blink {
+    animation: blink 4s linear infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    45%,
+    50%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    47.5% {
+        transform: scaleY(0.1);
+    }
+}
+
+.animate-talk {
+    animation: talk 0.2s ease-in-out infinite alternate;
+}
+
+@keyframes talk {
+    from {
+        transform: scaleY(0.5);
+    }
+
+    to {
+        transform: scaleY(1.5);
+    }
+}
+
+.animate-sway {
+    animation: sway 3s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+.animate-sway-slow {
+    animation: sway-slow 5s ease-in-out infinite alternate;
+}
+
+@keyframes sway-slow {
+    from {
+        transform: rotate(-2deg);
+    }
+
+    to {
+        transform: rotate(2deg);
+    }
+}
+
+/* Hair Flow Animation */
+.animate-hair-flow {
+    animation: hairFlow 4s ease-in-out infinite alternate;
+    transform-origin: center top;
+}
+
+@keyframes hairFlow {
+    from {
+        transform: skewX(0deg) rotate(0deg);
+    }
+
+    to {
+        transform: skewX(2deg) rotate(1deg);
+    }
+}
+
+/* Mood Colors */
+.luna-mood-happy {
+    color: #60a5fa;
+    fill: #60a5fa;
+}
+
+.luna-mood-playful {
+    color: #f472b6;
+    fill: #f472b6;
+}
+
+.luna-mood-thoughtful {
+    color: #a78bfa;
+    fill: #a78bfa;
+}
+
+.luna-mood-curious {
+    color: #34d399;
+    fill: #34d399;
+}
+
+.luna-mood-neutral {
+    color: #94a3b8;
+    fill: #94a3b8;
+}
+
+/* Core Container */
+.luna-container {
+    filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
+    transition: filter 0.5s ease;
+}
+
+/* Glow Pulse */
+.animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+        filter: drop-shadow(0 0 5px #60a5fa);
+    }
+
+    50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 15px #a78bfa);
+    }
+}
+
+/* Particles */
+.particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: particleRise 4s linear infinite;
+}
+
+@keyframes particleRise {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Hologram Effects */
+.hologram-line {
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 100%);
+    background-size: 100% 4px;
+    animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 100%;
+    }
+}
+
+.mask-image-fade {
+    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+}
+
+/* Utility Classes for Luna Layout */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.z-20 {
+    z-index: 20;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.w-96 {
+    width: 24rem;
+}
+
+.h-96 {
+    height: 24rem;
+}
+
+.w-48 {
+    width: 12rem;
+}
+
+.h-12 {
+    height: 3rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.rounded-\[100\%\] {
+    border-radius: 100%;
+}
+
+.bg-current {
+    background-color: currentColor;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.opacity-20 {
+    opacity: 0.2;
+}
+
+.opacity-30 {
+    opacity: 0.3;
+}
+
+.opacity-40 {
+    opacity: 0.4;
+}
+
+.opacity-60 {
+    opacity: 0.6;
+}
+
+.opacity-70 {
+    opacity: 0.7;
+}
+
+.opacity-80 {
+    opacity: 0.8;
+}
+
+.opacity-90 {
+    opacity: 0.9;
+}
+
+.opacity-95 {
+    opacity: 0.95;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+.blur-\[40px\] {
+    filter: blur(40px);
+}
+
+.drop-shadow-\[0_0_20px_rgba\(59\,130\,246\,0\.6\)\] {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
+}
+
+.fill-current {
+    fill: currentColor;
+}
+
+.mix-blend-overlay {
+    mix-blend-mode: overlay;
+}
+
+.transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+}
+
+.duration-700 {
+    transition-duration: 700ms;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
