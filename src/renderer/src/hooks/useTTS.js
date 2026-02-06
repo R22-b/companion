@@ -11,15 +11,44 @@ export const useTTS = () => {
             console.log("TTS: Loaded voices", available.length);
             setVoices(available);
 
-            // Prefer a female/soft voice
-            const preferred = available.find(v =>
-                v.name.includes('Zira') || // Windows
-                v.name.includes('Samantha') || // Mac
-                v.name.includes('Google US English') // Chrome
-            );
+            // Prefer cute/feminine voices for Luna
+            const voicePreferences = [
+                // Windows voices
+                'Microsoft Zira',
+                'Microsoft Aria',
+                'Microsoft Jenny',
+                'Zira',
+                // Mac voices
+                'Samantha',
+                'Karen',
+                'Moira',
+                // Google voices
+                'Google US English Female',
+                'Google UK English Female',
+            ];
 
-            if (preferred) setSelectedVoice(preferred);
-            else setSelectedVoice(available[0]);
+            let preferred = null;
+            for (const pref of voicePreferences) {
+                preferred = available.find(v =>
+                    v.name.toLowerCase().includes(pref.toLowerCase())
+                );
+                if (preferred) break;
+            }
+
+            // Fallback to any female voice
+            if (!preferred) {
+                preferred = available.find(v =>
+                    v.name.toLowerCase().includes('female') ||
+                    v.name.toLowerCase().includes('woman')
+                );
+            }
+
+            if (preferred) {
+                console.log("TTS: Selected voice:", preferred.name);
+                setSelectedVoice(preferred);
+            } else if (available.length > 0) {
+                setSelectedVoice(available[0]);
+            }
         };
 
         loadVoices();

@@ -140,17 +140,18 @@ function createWindow() {
     } catch (e) { console.error("Failed to load position", e) }
 
     const mainWindow = new BrowserWindow({
-        width: 300,
-        height: 400,
+        width: 700,
+        height: 550,
         show: false,
         autoHideMenuBar: true,
-        transparent: true,
-        frame: false,
-        alwaysOnTop: true,
-        resizable: false,
-        hasShadow: false,
-        backgroundColor: '#00000000',
-        skipTaskbar: true,
+        transparent: false,         // Visible for testing
+        frame: true,                // Show window frame
+        alwaysOnTop: false,
+        resizable: true,
+        hasShadow: true,
+        backgroundColor: '#1a1a2e',
+        skipTaskbar: false,         // Show in taskbar
+        focusable: true,
         webPreferences: {
             preload: join(__dirname, '../preload/index.js'),
             sandbox: false
@@ -158,10 +159,7 @@ function createWindow() {
     })
 
     mainWindow.on('ready-to-show', () => {
-        const primaryDisplay = screen.getPrimaryDisplay();
-        const { width, height } = primaryDisplay.workAreaSize;
-        // Position in bottom right
-        mainWindow.setPosition(width - 320, height - 420);
+        mainWindow.center();
         mainWindow.show();
         console.log('VERIFICATION: LUNA_MANIFESTED');
     })

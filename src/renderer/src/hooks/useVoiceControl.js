@@ -23,15 +23,14 @@ export const useVoiceControl = (onCommand) => {
         };
 
         recognition.onend = () => {
-            console.log("Voice Control: Stopped listening. Restarting...");
             setIsListening(false);
-            // Auto-restart for continuous listening
+            // Auto-restart for continuous listening (silent restart)
             try {
                 recognition.start();
             } catch (e) { /* ignore already started errors */ }
         };
 
-        recognition.onError = (event) => {
+        recognition.onerror = (event) => {
             console.error("Voice Control Error:", event.error);
         };
 

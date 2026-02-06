@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react'
+import { create } from 'zustand';
 
 /**
  * Mood States: idle, work, talk, happy, shy, sad, annoyed, sleepy
+ * Energy Levels: alert, quiet, warm, slow
+ * Activity States: neutral, talking, listening, thinking
  */
-
-export const useMoodStore = () => {
-    const [mood, setMood] = useState('idle')
-    const [energyLevel, setEnergyLevel] = useState('alert') // alert, quiet, warm, slow
-
-    const updateMood = (newMood) => {
-        setMood(newMood)
-    }
-
-    const updateEnergy = (newEnergy) => {
-        setEnergyLevel(newEnergy)
-    }
-
-    return { mood, energyLevel, updateMood, updateEnergy }
-}
+export const useMoodStore = create((set) => ({
+  mood: 'idle',
+  energyLevel: 'alert',
+  activity: 'neutral',
+  setMood: (mood) => set({ mood }),
+  updateMood: (mood) => set({ mood }),
+  setEnergyLevel: (energyLevel) => set({ energyLevel }),
+  updateEnergy: (energyLevel) => set({ energyLevel }),
+  setActivity: (activity) => set({ activity }),
+}));
