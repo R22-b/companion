@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Companion</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Companion</title>
+  <!-- CSP updated for Live2D and local scripts -->
+  <meta http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; worker-src blob:;" />
+
+  <!-- Live2D Cubism 4 Core - Load from local public folder -->
+  <script src="/live2dcubismcore.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="./src/main.jsx"></script>
+</body>
+
 </html>

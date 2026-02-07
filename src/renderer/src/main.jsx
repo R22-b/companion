@@ -1,7 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import LunaDemo from './LunaDemo'
+import Live2DDemo from './Live2DDemo'
+import AvatarShowcase from './AvatarShowcase'
 import './index.css'
+
+// Demo Modes via URL parameters:
+// ?demo=true     - Luna Avatar Demo (CSS-based enhanced avatar)
+// ?live2d=true   - Live2D Demo (actual .moc3 model)
+// ?showcase=true - Avatar Showcase (all avatar types)
+const urlParams = new URLSearchParams(window.location.search);
+const DEMO_MODE = urlParams.get('demo') === 'true';
+const LIVE2D_MODE = urlParams.get('live2d') === 'true';
+const SHOWCASE_MODE = urlParams.get('showcase') === 'true';
+
+// Choose which component to render
+const getComponent = () => {
+  if (SHOWCASE_MODE) return <AvatarShowcase />;
+  if (LIVE2D_MODE) return <Live2DDemo />;
+  if (DEMO_MODE) return <LunaDemo />;
+  return <App />;
+};
 
 // VERIFICATION MOCK FOR BROWSER
 if (!window.api) {
@@ -33,7 +53,7 @@ if (!window.api) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {getComponent()}
   </React.StrictMode>
 );
 

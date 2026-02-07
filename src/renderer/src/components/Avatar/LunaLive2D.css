@@ -1,0 +1,132 @@
+/* ============================================
+   LUNA LIVE2D - Wrapper Styles
+   Premium holographic container for Live2D model
+   ============================================ */
+
+.luna-live2d-wrapper {
+    position: relative;
+    width: 280px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Live2D Canvas */
+.luna-live2d-canvas {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.6)) drop-shadow(0 0 60px rgba(255, 107, 255, 0.4));
+    animation: live2d-float 4s ease-in-out infinite;
+}
+
+@keyframes live2d-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Loading State */
+.luna-live2d-wrapper.loading {
+    background: radial-gradient(ellipse at center,
+            rgba(0, 245, 255, 0.1) 0%,
+            transparent 70%);
+}
+
+.live2d-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.loader-ring {
+    width: 60px;
+    height: 60px;
+    border: 3px solid transparent;
+    border-top-color: #00f5ff;
+    border-right-color: #ff6bff;
+    border-radius: 50%;
+    animation: loader-spin 1s linear infinite;
+}
+
+@keyframes loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.live2d-loader span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: #00f5ff;
+    text-shadow: 0 0 10px #00f5ff;
+    letter-spacing: 2px;
+}
+
+/* Status Badges */
+.live2d-badge,
+.live2d-error {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.live2d-badge {
+    background: rgba(0, 245, 255, 0.2);
+    color: #00f5ff;
+    border: 1px solid rgba(0, 245, 255, 0.4);
+}
+
+.live2d-error {
+    background: rgba(255, 100, 100, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 100, 100, 0.4);
+}
+
+/* Fallback Mode Enhancement */
+.luna-live2d-wrapper.fallback {
+    position: relative;
+    overflow: visible;
+}
+
+.luna-live2d-wrapper.fallback::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(ellipse at center,
+            rgba(0, 245, 255, 0.05) 0%,
+            transparent 50%);
+    animation: ambient-pulse 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes ambient-pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}

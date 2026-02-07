@@ -1,0 +1,222 @@
+/* ============================================
+   HIYORI LIVE2D - Holographic Wrapper Styles
+   ============================================ */
+
+.hiyori-live2d-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+    background: radial-gradient(ellipse at center,
+            rgba(0, 245, 255, 0.05) 0%,
+            transparent 70%);
+}
+
+/* Canvas */
+.hiyori-live2d-canvas {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hiyori-live2d-canvas:hover {
+    transform: scale(1.02);
+}
+
+/* Holographic overlay effects */
+.holo-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0.3;
+}
+
+.holo-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent 0px,
+            rgba(0, 245, 255, 0.03) 1px,
+            transparent 2px);
+    animation: scanline-scroll 8s linear infinite;
+}
+
+@keyframes scanline-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+}
+
+.holo-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%,
+            rgba(0, 245, 255, 0.15) 0%,
+            transparent 50%);
+    animation: holo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes holo-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+/* Loading State */
+.hiyori-live2d-wrapper.loading {
+    background: radial-gradient(ellipse at center,
+            rgba(0, 245, 255, 0.1) 0%,
+            transparent 70%);
+}
+
+.live2d-loader {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 30;
+}
+
+.loader-ring {
+    width: 60px;
+    height: 60px;
+    border: 3px solid transparent;
+    border-top-color: #00f5ff;
+    border-right-color: #ff6bff;
+    border-radius: 50%;
+    animation: loader-spin 1s linear infinite;
+}
+
+@keyframes loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.live2d-loader span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: #00f5ff;
+    text-shadow: 0 0 10px #00f5ff;
+    letter-spacing: 2px;
+}
+
+/* Error State */
+.hiyori-live2d-wrapper.error {
+    background: radial-gradient(ellipse at center,
+            rgba(255, 100, 100, 0.1) 0%,
+            transparent 70%);
+}
+
+.live2d-error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #ff6b6b;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-icon {
+    font-size: 48px;
+}
+
+.live2d-error-content p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.live2d-error-content small {
+    font-size: 11px;
+    opacity: 0.7;
+    max-width: 250px;
+    word-break: break-word;
+}
+
+/* Motion Indicator */
+.motion-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    background: rgba(0, 245, 255, 0.2);
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    border-radius: 15px;
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    color: #00f5ff;
+    letter-spacing: 1px;
+    z-index: 25;
+    animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Click Hint */
+.click-hint {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background: rgba(255, 107, 255, 0.15);
+    border: 1px solid rgba(255, 107, 255, 0.3);
+    border-radius: 20px;
+    font-size: 11px;
+    color: #ff6bff;
+    letter-spacing: 1px;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hiyori-live2d-wrapper:hover .click-hint {
+    opacity: 1;
+}
+
+/* Loaded state glow */
+.hiyori-live2d-wrapper.loaded {
+    filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.3)) drop-shadow(0 0 60px rgba(255, 107, 255, 0.2));
+    animation: idle-float 5s ease-in-out infinite;
+}
+
+@keyframes idle-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}

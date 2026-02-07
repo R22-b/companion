@@ -1,0 +1,192 @@
+/* Live2D Demo Page Styles */
+
+.live2d-demo-page {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #0f0f2a 100%);
+    color: #e0e0f0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.demo-header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(to bottom, rgba(0, 245, 255, 0.1), transparent);
+}
+
+.demo-header h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    color: #00f5ff;
+    text-shadow: 0 0 20px #00f5ff, 0 0 40px #ff6bff;
+    margin: 0;
+}
+
+.demo-header p {
+    color: #8888aa;
+    margin: 10px 0 0;
+    letter-spacing: 1px;
+}
+
+/* Main Layout */
+.demo-main {
+    flex: 1;
+    display: flex;
+    gap: 30px;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .demo-main {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Model Container */
+.model-container {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 24px;
+    border: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+/* Info Sidebar */
+.demo-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 350px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 245, 255, 0.15);
+    border-radius: 16px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.info-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    color: #00f5ff;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.info-card ul,
+.info-card ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.info-card li {
+    font-size: 13px;
+    color: #b0b0c0;
+    padding: 4px 0;
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-badge.ready {
+    background: rgba(107, 255, 107, 0.15);
+    color: #6bff6b;
+    border: 1px solid rgba(107, 255, 107, 0.3);
+}
+
+.status-badge.loading {
+    background: rgba(0, 245, 255, 0.15);
+    color: #00f5ff;
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.status-badge.error {
+    background: rgba(255, 100, 100, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* File List */
+.file-list {
+    display: block;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #8888aa;
+}
+
+.file-list div {
+    padding: 3px 0;
+}
+
+/* Note Card */
+.info-card.note {
+    background: rgba(255, 107, 255, 0.05);
+    border-color: rgba(255, 107, 255, 0.2);
+}
+
+.info-card.note h3 {
+    color: #ff6bff;
+}
+
+.info-card.note p {
+    font-size: 12px;
+    color: #b0b0c0;
+    margin: 0 0 10px;
+}
+
+.info-card.note ol {
+    font-size: 12px;
+}
+
+.price-estimate {
+    background: rgba(179, 136, 255, 0.15);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px !important;
+    color: #b388ff !important;
+}
+
+/* Footer */
+.demo-footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #666;
+    font-size: 12px;
+}

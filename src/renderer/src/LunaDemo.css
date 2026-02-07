@@ -1,0 +1,514 @@
+/* ============================================
+   LUNA DEMO PAGE
+   Interactive showcase of all avatar variants
+   ============================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+/* CSS Variables */
+:root {
+    --demo-bg-dark: #0a0a1a;
+    --demo-bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #0f0f2a 100%);
+    --demo-cyan: #00f5ff;
+    --demo-magenta: #ff6bff;
+    --demo-purple: #b388ff;
+    --demo-pink: #ffb3da;
+    --demo-surface: rgba(255, 255, 255, 0.05);
+    --demo-border: rgba(0, 245, 255, 0.2);
+    --demo-text: #e0e0f0;
+    --demo-text-dim: #8888aa;
+}
+
+/* Base Container */
+.luna-demo-container {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--demo-bg-gradient);
+    color: var(--demo-text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header */
+.demo-header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    background: linear-gradient(to bottom, rgba(0, 245, 255, 0.1), transparent);
+}
+
+.demo-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--demo-cyan);
+    text-shadow:
+        0 0 20px var(--demo-cyan),
+        0 0 40px var(--demo-magenta);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.title-icon {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.demo-subtitle {
+    font-size: 1rem;
+    color: var(--demo-text-dim);
+    margin: 10px 0 0;
+    letter-spacing: 2px;
+}
+
+/* Main Content Layout */
+.demo-content {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 20px;
+    padding: 20px;
+    flex: 1;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .demo-content {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+}
+
+/* Control Panels */
+.demo-controls,
+.demo-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-section,
+.feature-section {
+    background: var(--demo-surface);
+    border: 1px solid var(--demo-border);
+    border-radius: 16px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.control-section h3,
+.feature-section h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--demo-cyan);
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--demo-border);
+    letter-spacing: 1px;
+}
+
+/* Variant Buttons */
+.variant-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.variant-btn {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--demo-border);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--demo-text-dim);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.variant-btn:hover {
+    border-color: var(--demo-cyan);
+    color: var(--demo-cyan);
+}
+
+.variant-btn.active {
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(255, 107, 255, 0.1));
+    border-color: var(--demo-cyan);
+    color: var(--demo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+/* State Buttons */
+.state-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.state-btn {
+    padding: 8px 14px;
+    border: 1px solid var(--demo-border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--demo-text-dim);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.state-btn:hover {
+    border-color: var(--demo-magenta);
+    color: var(--demo-magenta);
+    transform: translateY(-2px);
+}
+
+.state-btn.active {
+    background: linear-gradient(135deg, var(--demo-magenta), var(--demo-purple));
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 107, 255, 0.4);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--demo-cyan), var(--demo-purple));
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 245, 255, 0.3);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 245, 255, 0.4);
+}
+
+.action-btn.speaking {
+    background: linear-gradient(135deg, var(--demo-magenta), var(--demo-pink));
+    animation: speaking-pulse 0.5s ease-in-out infinite;
+}
+
+@keyframes speaking-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(255, 107, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(255, 107, 255, 0.6);
+    }
+}
+
+.action-btn.active {
+    background: linear-gradient(135deg, #6bff6b, #00d4aa);
+}
+
+/* Toggle List */
+.toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.toggle-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--demo-cyan);
+    cursor: pointer;
+}
+
+.toggle-label {
+    font-size: 0.85rem;
+    color: var(--demo-text);
+}
+
+/* Info Section */
+.info-section {
+    background: rgba(0, 245, 255, 0.05);
+}
+
+.info-content p {
+    margin: 6px 0;
+    font-size: 0.8rem;
+}
+
+.info-content strong {
+    color: var(--demo-cyan);
+}
+
+/* Demo Stage */
+.demo-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center,
+            rgba(0, 245, 255, 0.05) 0%,
+            transparent 70%);
+    border: 1px solid var(--demo-border);
+}
+
+.stage-backdrop {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.3;
+}
+
+.backdrop-grid {
+    position: absolute;
+    inset: -50%;
+    background-image:
+        linear-gradient(var(--demo-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--demo-border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+    from {
+        transform: perspective(500px) rotateX(60deg) translateY(0);
+    }
+
+    to {
+        transform: perspective(500px) rotateX(60deg) translateY(40px);
+    }
+}
+
+.avatar-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 20;
+}
+
+.label-variant,
+.label-state {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.label-variant {
+    background: rgba(0, 245, 255, 0.2);
+    color: var(--demo-cyan);
+    border: 1px solid var(--demo-cyan);
+}
+
+.label-state {
+    background: rgba(255, 107, 255, 0.2);
+    color: var(--demo-magenta);
+    border: 1px solid var(--demo-magenta);
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.8rem;
+    color: var(--demo-text-dim);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+.feature-list li.active {
+    color: var(--demo-text);
+}
+
+.feature-list li.active .feature-icon {
+    filter: drop-shadow(0 0 5px var(--demo-cyan));
+}
+
+.feature-icon {
+    font-size: 1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+/* State Effects List */
+.state-effects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.state-effects li {
+    font-size: 0.8rem;
+    padding: 5px 0;
+    color: var(--demo-text-dim);
+}
+
+.state-effects li strong {
+    color: var(--demo-cyan);
+}
+
+/* Live2D Section */
+.live2d-section {
+    background: linear-gradient(135deg, rgba(179, 136, 255, 0.1), rgba(255, 107, 255, 0.05));
+    border-color: rgba(179, 136, 255, 0.3);
+}
+
+.live2d-section h3 {
+    color: var(--demo-purple);
+}
+
+.live2d-section p {
+    font-size: 0.8rem;
+    color: var(--demo-text-dim);
+    margin: 0 0 8px;
+}
+
+.live2d-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.live2d-section li {
+    font-size: 0.75rem;
+    padding: 3px 0;
+    color: var(--demo-text-dim);
+}
+
+.live2d-section li::before {
+    content: "→ ";
+    color: var(--demo-purple);
+}
+
+.live2d-note {
+    margin-top: 10px !important;
+    padding: 8px;
+    background: rgba(179, 136, 255, 0.1);
+    border-radius: 8px;
+    font-size: 0.7rem !important;
+    text-align: center;
+}
+
+/* Footer */
+.demo-footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    color: var(--demo-text-dim);
+    font-size: 0.85rem;
+}
+
+/* Scrollbar */
+.luna-demo-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.luna-demo-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.luna-demo-container::-webkit-scrollbar-thumb {
+    background: var(--demo-cyan);
+    border-radius: 4px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1200px) {
+    .demo-title {
+        font-size: 1.8rem;
+    }
+
+    .demo-controls,
+    .demo-features {
+        order: 2;
+    }
+
+    .demo-stage {
+        order: 1;
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 600px) {
+    .demo-content {
+        padding: 10px;
+    }
+
+    .demo-title {
+        font-size: 1.4rem;
+    }
+
+    .stage-label {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
